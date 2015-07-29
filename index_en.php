@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
 <?php 
 // set page language
 $lang = 'en';
@@ -17,13 +18,17 @@ $lang = 'en';
 	<meta name="Programmer" content="Cem KURT" />	
 	
 	<link rel="icon" href="favicon.gif" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
+  <link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
 	
 	<link rel="stylesheet" href="css/base.css" type="text/css" />
 		
-	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/jquery.isotope.js"></script>
 	<script type="text/javascript" src="scripts/scripts.js"></script>
+
+	<!-- scripts needed for TypeTool -->
+	<script type="text/javascript" src="scripts/autosize.min.js"></script>
+	<script type="text/javascript" src="scripts/typetool.js"></script>
 	
 	<!-- <script type="text/javascript" src="scripts/jwplayer.js"></script>
 	<script type="text/javascript">jwplayer.key="ZEnbfMTTdQK/Wv9rUaVSUs+RJ82w6rI5B8YPjQ==";</script> -->

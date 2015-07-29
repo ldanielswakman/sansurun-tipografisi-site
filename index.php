@@ -28,6 +28,7 @@ $lang = 'tr';
 
 	<!-- scripts needed for TypeTool -->
 	<script type="text/javascript" src="scripts/autosize.min.js"></script>
+	<script type="text/javascript" src="scripts/typetool.js"></script>
 	
 	<!-- <script type="text/javascript" src="scripts/jwplayer.js"></script>
 	<script type="text/javascript">jwplayer.key="ZEnbfMTTdQK/Wv9rUaVSUs+RJ82w6rI5B8YPjQ==";</script> -->
