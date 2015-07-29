@@ -12,17 +12,17 @@
 	<meta name="fragment" content="!">
 	<meta name="Programmer" content="Cem KURT" />	
 	
-	<link rel="icon" href="/favicon.gif" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.gif" type="image/x-icon" />
+	<link rel="icon" href="favicon.gif" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.gif" type="image/x-icon" />
 	
 	<link rel="stylesheet" href="css/base.css" type="text/css" />
 		
-	<script type="text/javascript" src="/scripts/jquery.js"></script>
-	<script type="text/javascript" src="/scripts/jquery.isotope.js"></script>
-	<script type="text/javascript" src="/scripts/scripts.js"></script>
+	<script type="text/javascript" src="scripts/jquery.js"></script>
+	<script type="text/javascript" src="scripts/jquery.isotope.js"></script>
+	<script type="text/javascript" src="scripts/scripts.js"></script>
 	
-	<script type="text/javascript" src="/scripts/jwplayer.js"></script>
-	<script type="text/javascript">jwplayer.key="ZEnbfMTTdQK/Wv9rUaVSUs+RJ82w6rI5B8YPjQ==";</script>
+	<!-- <script type="text/javascript" src="scripts/jwplayer.js"></script>
+	<script type="text/javascript">jwplayer.key="ZEnbfMTTdQK/Wv9rUaVSUs+RJ82w6rI5B8YPjQ==";</script> -->
 	
 </head>
 <body>
@@ -42,7 +42,7 @@
 		
 			<a class="PlayIcon" href="#"></a>
 			
-			<!-- Start EasyHtml5Video.com BODY section -->
+			<!-- Start EasyHtml5Video.com BODY section
 			<div class="VideoPlayer">
 		
 				<video controls="controls" loop="loop" width="100%" height="100%">
@@ -58,7 +58,7 @@
 					</object>
 				</video>
 				
-			</div>
+			</div> -->
 			
 			<script src="scripts/HTML5ext.js" type="text/javascript"></script>
 			
@@ -102,12 +102,12 @@
 		</div>
 		
 		<div class="Posters">
-			<div class="Poster"><img src="/assets/Posters/01.jpg" /></div>
-			<div class="Poster"><img src="/assets/Posters/02.jpg" /></div>
-			<div class="Poster"><img src="/assets/Posters/03.jpg" /></div>
-			<div class="Poster"><img src="/assets/Posters/04.jpg" /></div>
-			<div class="Poster"><img src="/assets/Posters/05.jpg" /></div>
-			<div class="Poster"><img src="/assets/Posters/06.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/01.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/02.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/03.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/04.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/05.jpg" /></div>
+			<div class="Poster"><img src="assets/Posters/06.jpg" /></div>
 		</div>
 		
 		<div class="Fonts">
