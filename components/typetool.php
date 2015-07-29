@@ -4,6 +4,19 @@ if (!isset($lang)) { $lang = 'tr'; }
 ?>
 
 <div class="TypeTool">
-  – Sansürün Tipografisi Type Tool –<br />
-  language: <?php echo $lang ?>
+
+  <textarea id="string" type="text" rows="1" placeholder="write"></textarea>
+
+  <div class="actions">
+    <a href="#" class="button">
+      download
+    </a>
+    <a href="#" class="button">
+      facebook
+    </a>
+    <a href="#" class="button">
+      twitter
+    </a>
+  </div>
+
 </div>

@@ -56,12 +56,98 @@ div.Logo div.LangBar a
 	color			: inherit;
 }
 
+
+
 .TypeTool {
 	width: 800px;
 	margin: 0 auto;
 	font-family: Archer-Light;
 	color: #fff;
 }
+.TypeTool textarea {
+	display: block;
+	width: 100%;
+	padding: 50px;
+	background: #111;
+	border: none;
+	line-height: 0.75em;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 3.2em;
+	letter-spacing: 0.15em;
+	color: rgba(255, 255, 255, 1);
+	color: yellow;
+	z-index: 1;
+	resize: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: padding 0.3s ease;
+	-moz-transition: padding 0.3s ease;
+	transition: padding 0.3s ease;
+}
+.TypeTool textarea:not(:disabled):not(:focus):hover {
+  background: #333;
+}
+.TypeTool textarea:focus {
+  outline: none;
+  background: #222;
+}
+.TypeTool textarea::selection {
+  background-color: #ff0;
+  color: #fff;
+}
+.TypeTool textarea::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.TypeTool textarea:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.TypeTool textarea::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.TypeTool .actions {
+	display: block;
+	margin: 20px 0;
+	text-align: right;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s ease;
+	-moz-transition: opacity 0.3s ease;
+	transition: opacity 0.3s ease;
+}
+.TypeTool .actions.active {
+	opacity: 1;
+}
+.TypeTool .button {
+	display: inline-block;
+	margin-left: 10px;
+  padding: 5px 20px;
+  border: 2px solid #999;
+  background: none;
+  color: #ccc;
+  line-height: 26px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: top;
+  text-decoration: none;
+}
+.button:hover {
+  border-color: transparent;
+  background-color: #999;
+  color: #fff;
+}
+.button:active {
+  background: #ff0;
+  color: #000;
+  -webkit-transform: translateY(2px);
+  -moz-transform: translateY(2px);
+  transform: translateY(2px);
+}
+.button:focus {
+  outline: none;
+}
+
+
 
 div.Video
 {

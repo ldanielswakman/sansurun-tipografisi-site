@@ -49,6 +49,15 @@
 			itemSelector	: '.ISO',
 			layoutMode		: 'fitRows'
 		});
+
+		$('#string').on('input', function() {
+			// show or hide actions
+			if( $(this).val().length > 1) {
+				$('.TypeTool .actions').addClass('active');
+			} else {
+				$('.TypeTool .actions').removeClass('active');
+			}
+		});
 		
 					
 	});
