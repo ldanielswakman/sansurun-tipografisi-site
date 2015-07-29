@@ -15,7 +15,10 @@ if($lang == 'tr') {
 
 <div class="TypeTool">
 
-  <textarea id="string" type="text" rows="1" placeholder="<? echo $placeholder ?>"></textarea>
+  <div id="string_container">
+    <textarea id="string" type="text" rows="1" placeholder="<? echo $placeholder ?>"></textarea>
+    <div id="string_display"></div>
+  </div>
 
   <div class="actions">
     <a href="#" class="button">
