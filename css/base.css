@@ -56,6 +56,13 @@ div.Logo div.LangBar a
 	color			: inherit;
 }
 
+.TypeTool {
+	width: 800px;
+	margin: 0 auto;
+	font-family: Archer-Light;
+	color: #fff;
+}
+
 div.Video
 {
 	min-width		: 290px;

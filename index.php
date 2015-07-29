@@ -1,5 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<?php 
+// set page language
+$lang = 'tr';
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $lang ?>">
 <head>
 	<title>Sansürün Tipografisi'nin Hikayesi</title>
 	
@@ -37,6 +42,11 @@
 				<a href="index_en.php">EN</a>
 			</div>
 		</div>
+
+		<?php
+		// call type cool component
+		include 'components/typetool.php';
+		?>
 		
 		<div class="Video">
 		
