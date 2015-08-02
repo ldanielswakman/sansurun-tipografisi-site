@@ -103,12 +103,20 @@ div.Logo div.LangBar a
 }
 .TypeTool textarea::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.4);
+  -webkit-text-fill-color: initial;
 }
 .TypeTool textarea:-moz-placeholder {
   color: rgba(255, 255, 255, 0.4);
+  -moz-text-fill-color: initial;
 }
 .TypeTool textarea::-moz-placeholder {
   color: rgba(255, 255, 255, 0.4);
+  -moz-text-fill-color: initial;
+}
+.TypeTool textarea {
+    color: #ff0;
+    text-shadow: 0px 0px 0px transparent;
+    -webkit-text-fill-color: transparent;
 }
 
 /* --- Action buttons --- */
