@@ -4,11 +4,15 @@ if (!isset($lang)) { $lang = 'en'; }
 
 // language-specific strings
 if($lang == 'tr') {
-  $placeholder = 'yaz...';
-  $download = 'indir';
+  $trans = array(
+    'placeholder' => 'yaz...',
+    'download' => 'indir',
+  );
 } else {
-  $placeholder = 'write...';
-  $download = 'download';
+  $trans = array(
+    'placeholder' => 'write...',
+    'download' => 'download',
+  );
 }
 
 ?>
@@ -16,18 +20,22 @@ if($lang == 'tr') {
 <div class="TypeTool">
 
   <div id="string_container">
-    <textarea id="string" type="text" rows="1" placeholder="<? echo $placeholder ?>" autocomplete="off" spellcheck="false"></textarea>
-    <div id="string_display"></div>
+    <textarea id="string" type="text" rows="1" placeholder="<? echo $trans['placeholder'] ?>" autocomplete="off" spellcheck="false"></textarea>
+    <div class="string-cover" id="string_display"></div>
+    <div class="string-cover" id="string_mask">
+      <span class="progress"></span>
+      <span class="loader"></span>
+    </div>
   </div>
 
   <div class="actions">
-    <a href="#" class="button">
-      <?php echo $download ?>
+    <a href="#" id="typetool_download" class="button">
+      <?php echo $trans['download'] ?>
     </a>
-    <a href="#" class="button">
+    <a href="#" id="typetool_share_fb" class="button">
       facebook
     </a>
-    <a href="#" class="button">
+    <a href="#" id="typetool_share_tw" class="button">
       twitter
     </a>
   </div>

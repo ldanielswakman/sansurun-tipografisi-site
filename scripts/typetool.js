@@ -61,13 +61,32 @@ $(document).ready(function() {
   });
 
   // restrict input based on allowed characters
-  $('#string').on('keydown keypress', function() {
+  $('#string').on('keypress', function() {
     var regex = new RegExp('^[' + settings['allowedCharsRegex'] + ']+$');
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
       event.preventDefault();
       return false;
     }
+  });
+
+  $('#typetool_download').click(function() {
+    $('#string_mask').css('opacity', 1);
+    $('#string_mask .progress').css('width', '20%');
+
+    compiledImage = combineImages($('#string').val());
+
+    $('#string_mask').css('opacity', 1);
+    $('#string_mask .progress').css('width', '60%');
+
+    $(this).attr('href', compiledImage).attr('download', $('#string').val());
+
+    $('#string_mask').css('opacity', 1);
+    $('#string_mask .progress').css('width', '100%');
+
+    setTimeout(function() { $('#string_mask').css('opacity', 0); }, 400);
+    setTimeout(function() { $('#string_mask .progress').css('width', '0'); }, 600);
+
   });
 
 });
@@ -88,3 +107,67 @@ function formatString(formattable_string, maxLength) {
   }
   return formatted_string;
 }
+
+function combineImages(string) {
+
+  // getting variables from settings
+  tileSize = settings['tileSize'];
+  tileGutter = settings['tileGutter'];
+  canvasPadding = settings['canvasPadding'];
+  lineLength = settings['lineLength'];
+  maxStringLength = settings['maxStringLength'];
+
+  // formatting string
+  string = formatString( string, maxStringLength );
+
+  // split into single-character array
+  letters = string.split('');
+
+  // determining amount of lines & set canvas dimentions
+  lines = 1;
+  if (letters.length > lineLength) {
+    lines = Math.ceil(letters.length / lineLength);
+    canvasWidth = lineLength * (tileSize + tileGutter) + 2 * canvasPadding - tileGutter;
+    canvasHeight = lines * (tileSize + tileGutter) + 2 * canvasPadding - tileGutter;
+  } else {
+    canvasWidth = letters.length * (tileSize + tileGutter) + 2 * canvasPadding - tileGutter;
+    canvasHeight = tileSize + 2 * canvasPadding;
+  }
+
+  // set up canvas object
+  var c = document.createElement("canvas");
+  c.setAttribute("id", "canvas");
+  c.setAttribute("width", canvasWidth);
+  c.setAttribute("height", canvasHeight);
+  var ctx = c.getContext("2d");
+
+  // set background colour by painting rectangle
+  ctx.fillStyle = "#000000";
+  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+
+  // iterate over individual characters
+  currentLine = 0;
+  prevEndX = canvasPadding;
+  $.each(letters, function(i, value) {
+    if(i > 1 && i % lineLength === 0) {
+      currentLine++;
+      prevEndX = canvasPadding;
+    }
+    char_base64 = alphabet_base64[value];
+    imageObj = new Image();
+    imageObj.src = base64_prefix + char_base64;
+    var offsetX = prevEndX;
+    var offsetY = (tileSize + tileGutter) * currentLine + canvasPadding;
+    ctx.drawImage(imageObj, offsetX, offsetY, tileSize, tileSize);
+    prevEndX = offsetX + tileSize + tileGutter;
+  });
+
+  compiledImage = c.toDataURL("image/png");
+
+  return compiledImage;
+}
+
+// base64toImgur ( compiledImage, string );
+// $('#string_display').append('<div class="loader"><span style="background-image: url(\'images/ajax-loader.gif\')"></span>');
+// $('#string_container textarea').attr('disabled', true);
+// $('#result').append('building imgur link...<br />');
