@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  // settings
+  // --- Settings
+
   settings = {
     'tileSize': 80,
     'tileGutter': 20,
@@ -60,7 +61,7 @@ $(document).ready(function() {
   });
 
   // restrict input based on allowed characters
-  $('#string').on('keypress', function() {
+  $('#string').on('keydown keypress', function() {
     var regex = new RegExp('^[' + settings['allowedCharsRegex'] + ']+$');
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
@@ -79,13 +80,7 @@ $(document).ready(function() {
 function formatString(formattable_string, maxLength) {
   if(!maxLength) { maxLength = settings['maxStringLength'] }
 
-  formatted_string = formattable_string
-    // process regex
-    .replace('/[^' + settings['allowedCharsRegex'] + '\- ]/g', '')
-    // 'manually' set turkish i characters to correct lowercase
-    .replace(/[İ]/g,'i').replace(/[I]/g,'ı')
-    // set other characters to lowercase
-    .toLowerCase();
+  formatted_string = formattable_string.replace('/[^' + settings['allowedCharsRegex'] + '\- ]/g', '').replace(/[İ]/g,'i').replace(/[I]/g,'ı').toLowerCase();
 
   // setting manual letter length cap (as a check)
   if(formatted_string.length > maxLength) {

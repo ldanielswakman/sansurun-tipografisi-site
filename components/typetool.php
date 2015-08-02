@@ -16,7 +16,7 @@ if($lang == 'tr') {
 <div class="TypeTool">
 
   <div id="string_container">
-    <textarea id="string" type="text" rows="1" placeholder="<? echo $placeholder ?>"></textarea>
+    <textarea id="string" type="text" rows="1" placeholder="<? echo $placeholder ?>" autocomplete="off" spellcheck="false"></textarea>
     <div id="string_display"></div>
   </div>
 

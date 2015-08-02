@@ -82,13 +82,14 @@ div.Logo div.LangBar a
 	font-family: "Courier New", Courier, monospace;
 	font-size: 80px;
 	letter-spacing: 0.15em;
-	color: rgba(255, 255, 255, 1);
-	color: yellow;
 	z-index: 1;
 	resize: none;
 	-webkit-transition: padding 0.3s ease;
 	-moz-transition: padding 0.3s ease;
 	transition: padding 0.3s ease;
+  color: #ff0;
+  text-shadow: 0px 0px 0px transparent;
+  -webkit-text-fill-color: transparent;
 }
 .TypeTool textarea:not(:disabled):not(:focus):hover {
   background: #333;
@@ -112,11 +113,6 @@ div.Logo div.LangBar a
 .TypeTool textarea::-moz-placeholder {
   color: rgba(255, 255, 255, 0.4);
   -moz-text-fill-color: initial;
-}
-.TypeTool textarea {
-    color: #ff0;
-    text-shadow: 0px 0px 0px transparent;
-    -webkit-text-fill-color: transparent;
 }
 
 /* --- Action buttons --- */
