@@ -157,6 +157,11 @@ div.Logo div.LangBar a
 .button:focus {
   outline: none;
 }
+.button.disabled {
+  border-color: #333;
+  color: #666;
+  pointer-events: none;
+}
 
 /* --- String container & display --- */
 #string_container {

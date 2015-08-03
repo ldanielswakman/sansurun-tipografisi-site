@@ -8,7 +8,10 @@ $(document).ready(function() {
     'canvasPadding': 50,
     'lineLength': 10,
     'maxStringLength': 30,
-    'allowedCharsRegex': 'a-zA-ZİışŞÇçĞğüÜÖö'
+    'allowedCharsRegex': 'a-zA-ZİışŞÇçĞğüÜÖö',
+    'imgurClientID': '99df06f8be87b5a',
+    'imgurAlbumID': 'H3H9B',
+    'twitterText': 'Typography of Censorship:',
   }
 
   // initiate base64 alphabet
@@ -70,23 +73,30 @@ $(document).ready(function() {
     }
   });
 
+  // download written string as image
   $('#typetool_download').click(function() {
-    $('#string_mask').css('opacity', 1);
-    $('#string_mask .progress').css('width', '20%');
+    setStringProgress(1,3);
 
     compiledImage = combineImages($('#string').val());
-
-    $('#string_mask').css('opacity', 1);
-    $('#string_mask .progress').css('width', '60%');
+    setStringProgress(2,3);
 
     $(this).attr('href', compiledImage).attr('download', $('#string').val());
+    setStringProgress(3,3);
 
-    $('#string_mask').css('opacity', 1);
-    $('#string_mask .progress').css('width', '100%');
+    setTimeout(function() {
+      setStringProgress(0);
+    }, 600);
+  });
 
-    setTimeout(function() { $('#string_mask').css('opacity', 0); }, 400);
-    setTimeout(function() { $('#string_mask .progress').css('width', '0'); }, 600);
+  // share written string to twitter
+  $('#typetool_share_tw').click(function() {
+    setStringProgress(0,4);
 
+    string = $('#string').val();
+    compiledImage = combineImages( string );
+    setStringProgress(1,4);
+
+    addToImgurAlbum(compiledImage, string, 'twitter');
   });
 
 });
@@ -106,6 +116,29 @@ function formatString(formattable_string, maxLength) {
     formatted_string = formatted_string.substring(0, maxLength);
   }
   return formatted_string;
+}
+
+function setStringProgress(currentStage, totalStages) {
+  if(currentStage == 0) {
+    $('#string_mask').css('opacity', 0);
+    $('.TypeTool .button').removeClass('disabled');
+    return false;
+  } 
+  if(!totalStages && currentStage < 5) { 
+    totalStages = 4;
+  } else if (currentStage > totalStages) {
+    totalStages = currentStage;
+  }
+
+  $('#string_mask').css('opacity', 1);
+  $('.TypeTool .button').addClass('disabled');
+
+  $('#string_mask .progress').css('width', Math.floor(currentStage/totalStages*100) + '%');
+  console.log('stage ' + currentStage + '... (' + Math.floor(currentStage/totalStages*100) + ')');
+
+  if(currentStage == totalStages) {
+    $('#string_mask .loader').css('background-image', 'url(assets/ajax-success.png)');
+  }
 }
 
 function combineImages(string) {
@@ -167,7 +200,82 @@ function combineImages(string) {
   return compiledImage;
 }
 
-// base64toImgur ( compiledImage, string );
-// $('#string_display').append('<div class="loader"><span style="background-image: url(\'images/ajax-loader.gif\')"></span>');
-// $('#string_container textarea').attr('disabled', true);
-// $('#result').append('building imgur link...<br />');
+function addToImgurAlbum(img, string, target_network) {
+
+  // api access
+  client_id = settings['imgurClientID'];
+
+  img = img.replace('data:image/png;base64,', '');
+  $.ajax({
+    url: 'https://api.imgur.com/3/image',
+    type: 'post',
+    headers: {
+      Authorization: 'Client-ID ' + client_id
+    },
+    data: {
+      image: img,
+      type: 'base64',
+      title: string
+    },
+    dataType: 'json',
+    success: function(response) {
+      setStringProgress(2,4);
+      renewImgurToken(response.data.id, response.data.link, response.data.title, target_network);
+    }
+  });
+
+}
+function renewImgurToken(img_id, img_link, img_title, target_network) {
+  client_id = settings['imgurClientID'];
+  client_secret = 'c223d994be4ec34a3171834c00392c8ac6c778e2';
+  refresh_token = '0ff29268cd3133e384e70a2ee30af59974ce5b81';
+
+  // refresh token request
+  $.ajax({
+    url: 'https://api.imgur.com/oauth2/token',
+    type: 'post',
+    headers: {
+    },
+    data: {
+      refresh_token: refresh_token,
+      client_id: client_id,
+      client_secret: client_secret,
+      grant_type: 'refresh_token'
+    },
+    dataType: 'json',
+    success: function(response) {
+      setStringProgress(3,4);
+      makeAddToAlbumRequest(img_id, img_link, img_title, target_network, response.access_token);
+    }
+  });
+}
+function makeAddToAlbumRequest(img_id, img_link, img_title, target_network, access_token) {
+  $.ajax({
+    url: 'https://api.imgur.com/3/album/' + settings['imgurAlbumID'] + '/add',
+    type: 'put',
+    headers: {
+      Authorization: 'Bearer ' + access_token,
+    },
+    data: {
+      ids: { img_id }
+    },
+    dataType: 'json',
+    success: function(albumresponse) {
+
+      setStringProgress(4,4);
+
+      if(target_network == 'twitter') {
+        twitter_text = settings['twitterText'] + ' ' + img_title + ' ' + img_link;
+        url = 'https://twitter.com/intent/tweet?text=' + twitter_text;
+        window.open(url, '_blank', 'width=600, height=300, menubar=no, top=300, left=450');
+      } else if (target_network == 'facebook') {
+
+      }
+
+      setTimeout(function() {
+        setStringProgress(0);
+      }, 600);
+
+    }
+  });
+}
