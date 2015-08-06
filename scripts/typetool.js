@@ -12,6 +12,9 @@ $(document).ready(function() {
     'imgurClientID': '99df06f8be87b5a',
     'imgurAlbumID': 'H3H9B',
     'twitterText': 'Typography of Censorship:',
+    'facebookText': 'Typography of Censorship:',
+    'facebookAppID': '1072153226143297',
+    'redirectURL': 'http://www.sansuruntipografisi.org/',
   }
 
   // initiate base64 alphabet
@@ -88,15 +91,15 @@ $(document).ready(function() {
     }, 600);
   });
 
-  // share written string to twitter
-  $('#typetool_share_tw').click(function() {
+  // share written string to twitter / facebook
+  $('.actions a[data-type="twitter"], .actions a[data-type="facebook"]').click(function() {
     setStringProgress(0,4);
 
     string = $('#string').val();
     compiledImage = combineImages( string );
     setStringProgress(1,4);
 
-    addToImgurAlbum(compiledImage, string, 'twitter');
+    addToImgurAlbum(compiledImage, string, $(this).attr('data-type'));
   });
 
 });
@@ -119,9 +122,13 @@ function formatString(formattable_string, maxLength) {
 }
 
 function setStringProgress(currentStage, totalStages) {
-  if(currentStage == 0) {
+  if(currentStage == 0 && !totalStages) {
     $('#string_mask').css('opacity', 0);
     $('.TypeTool .button').removeClass('disabled');
+    setTimeout(function() { 
+      $('#string_mask .loader').removeClass('success');
+      $('#string_mask .progress').css('width', 0);
+    }, 500);
     return false;
   } 
   if(!totalStages && currentStage < 5) { 
@@ -137,7 +144,7 @@ function setStringProgress(currentStage, totalStages) {
   console.log('stage ' + currentStage + '... (' + Math.floor(currentStage/totalStages*100) + ')');
 
   if(currentStage == totalStages) {
-    $('#string_mask .loader').css('background-image', 'url(assets/ajax-success.png)');
+    $('#string_mask .loader').addClass('success');
   }
 }
 
@@ -250,6 +257,7 @@ function renewImgurToken(img_id, img_link, img_title, target_network) {
   });
 }
 function makeAddToAlbumRequest(img_id, img_link, img_title, target_network, access_token) {
+  img_id
   $.ajax({
     url: 'https://api.imgur.com/3/album/' + settings['imgurAlbumID'] + '/add',
     type: 'put',
@@ -257,7 +265,7 @@ function makeAddToAlbumRequest(img_id, img_link, img_title, target_network, acce
       Authorization: 'Bearer ' + access_token,
     },
     data: {
-      ids: { img_id }
+      ids: img_id
     },
     dataType: 'json',
     success: function(albumresponse) {
@@ -265,11 +273,23 @@ function makeAddToAlbumRequest(img_id, img_link, img_title, target_network, acce
       setStringProgress(4,4);
 
       if(target_network == 'twitter') {
-        twitter_text = settings['twitterText'] + ' ' + img_title + ' ' + img_link;
+        twitter_text = settings['twitterText'] + ' \'' + img_title + '\' ' + img_link;
         url = 'https://twitter.com/intent/tweet?text=' + twitter_text;
-        window.open(url, '_blank', 'width=600, height=300, menubar=no, top=300, left=450');
       } else if (target_network == 'facebook') {
-
+        facebook_text = settings['facebookText'] + ' \'' + img_title + '\' ';
+        url = 'https://www.facebook.com/dialog/feed?';
+        url += 'app_id=' + settings['facebookAppID'];
+        url += '&display=popup&caption=' + facebook_text;
+        url += '&link=' + img_link;
+        url += '&redirect_uri=' + settings['redirectURL'];
+      }
+      if (url.length > 0) {
+        if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1) {
+          var newtab = safari.application.activeBrowserWindow.openTab();
+          newtab.url = url;
+        } else {
+          window.open(url, '_blank', 'width=600, height=300, menubar=no, top=300, left=450');
+        }
       }
 
       setTimeout(function() {

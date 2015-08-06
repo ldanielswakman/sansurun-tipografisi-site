@@ -115,54 +115,6 @@ div.Logo div.LangBar a
   -moz-text-fill-color: initial;
 }
 
-/* --- Action buttons --- */
-.TypeTool .actions {
-	display: block;
-	margin: 20px 0;
-	text-align: right;
-	opacity: 0;
-	-webkit-transition: opacity 0.3s ease;
-	-moz-transition: opacity 0.3s ease;
-	transition: opacity 0.3s ease;
-}
-.TypeTool .actions.active {
-	opacity: 1;
-}
-.TypeTool .button {
-	display: inline-block;
-	margin-left: 10px;
-  padding: 5px 20px;
-  border: 2px solid #999;
-  background: none;
-  color: #ccc;
-  line-height: 26px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  vertical-align: top;
-  text-decoration: none;
-}
-.button:hover {
-  border-color: transparent;
-  background-color: #999;
-  color: #fff;
-}
-.button:active {
-  background: #ff0;
-  color: #000;
-  -webkit-transform: translateY(2px);
-  -moz-transform: translateY(2px);
-  transform: translateY(2px);
-}
-.button:focus {
-  outline: none;
-}
-.button.disabled {
-  border-color: #333;
-  color: #666;
-  pointer-events: none;
-}
-
 /* --- String container & display --- */
 #string_container {
   position: relative;
@@ -199,11 +151,10 @@ div.Logo div.LangBar a
 }
 #string_mask .progress {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
   width: 0;
-  height: 20px;
-  margin-top: -10px;
+  height: 10px;
   background-color: rgba(255, 255, 0, 1);
   -webkit-transition: width 0.5s ease;
   -moz-transition: width 0.5s ease;
@@ -225,6 +176,57 @@ div.Logo div.LangBar a
   background-position: center center;
   background-repeat: no-repeat;
   text-align: center;
+}
+#string_mask .loader.success {
+  background-image: url('../assets/ajax-success.png');
+}
+
+/* --- Action buttons --- */
+.TypeTool .actions {
+  display: block;
+  margin: 20px 0;
+  text-align: right;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease;
+}
+.TypeTool .actions.active {
+  opacity: 1;
+}
+.TypeTool .button {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 5px 20px;
+  border: 2px solid #999;
+  background: none;
+  color: #ccc;
+  line-height: 26px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: top;
+  text-decoration: none;
+}
+.button:hover {
+  border-color: transparent;
+  background-color: #999;
+  color: #fff;
+}
+.button:active {
+  background: #ff0;
+  color: #000;
+  -webkit-transform: translateY(2px);
+  -moz-transform: translateY(2px);
+  transform: translateY(2px);
+}
+.button:focus {
+  outline: none;
+}
+.button.disabled {
+  border-color: #333;
+  color: #666;
+  pointer-events: none;
 }
 
 /* --- end TypeTool CSS --- */

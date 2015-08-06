@@ -32,10 +32,10 @@ if($lang == 'tr') {
     <a href="#" id="typetool_download" class="button">
       <?php echo $trans['download'] ?>
     </a>
-    <a href="#" id="typetool_share_fb" class="button">
+    <a href="#" data-type="facebook" class="button">
       facebook
     </a>
-    <a href="#" id="typetool_share_tw" class="button">
+    <a href="#" data-type="twitter" class="button">
       twitter
     </a>
   </div>
