@@ -104,15 +104,15 @@ div.Logo div.LangBar a
   color: #fff;
 }
 .TypeTool textarea::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
   -webkit-text-fill-color: initial;
 }
 .TypeTool textarea:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
   -moz-text-fill-color: initial;
 }
 .TypeTool textarea::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.1);
   -moz-text-fill-color: initial;
 }
 
@@ -188,12 +188,14 @@ div.Logo div.LangBar a
   margin: 20px 0;
   text-align: right;
   opacity: 0;
+  pointer-events: none;
   -webkit-transition: opacity 0.3s ease;
   -moz-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }
 .TypeTool .actions.active {
   opacity: 1;
+  pointer-events: all;
 }
 .TypeTool .button {
   display: inline-block;
@@ -223,7 +225,7 @@ div.Logo div.LangBar a
   outline: none;
 }
 .button.disabled {
-  background-color: #666;
+  background-color: #333;
   pointer-events: none;
 }
 .button span {
