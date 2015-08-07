@@ -198,10 +198,11 @@ div.Logo div.LangBar a
 .TypeTool .button {
   display: inline-block;
   margin-left: 10px;
-  padding: 5px 20px;
-  border: 2px solid #999;
+  padding: 10px 20px;
+  border: none;
   background: none;
-  color: #ccc;
+  background-color: #ff0;
+  color: #fff;
   line-height: 26px;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -210,13 +211,10 @@ div.Logo div.LangBar a
   text-decoration: none;
 }
 .button:hover {
-  border-color: transparent;
-  background-color: #999;
-  color: #fff;
+  background-color: #eee;
 }
 .button:active {
-  background: #ff0;
-  color: #000;
+  background: #fff;
   -webkit-transform: translateY(2px);
   -moz-transform: translateY(2px);
   transform: translateY(2px);
@@ -225,9 +223,25 @@ div.Logo div.LangBar a
   outline: none;
 }
 .button.disabled {
-  border-color: #333;
-  color: #666;
+  background-color: #666;
   pointer-events: none;
+}
+.button span {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-image: url('../assets/typetool-icons.png');
+  background-size: cover;
+  background-position: -96px;
+}
+.button[data-type="download"] span {
+  background-position: 0px;
+}
+.button[data-type="facebook"] span {
+  background-position: -64px;
+}
+.button[data-type="twitter"] span {
+  background-position: -32px;
 }
 
 /* --- end TypeTool CSS --- */

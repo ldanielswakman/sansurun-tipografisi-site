@@ -6,12 +6,10 @@ if (!isset($lang)) { $lang = 'en'; }
 if($lang == 'tr') {
   $trans = array(
     'placeholder' => 'yaz...',
-    'download' => 'indir',
   );
 } else {
   $trans = array(
     'placeholder' => 'write...',
-    'download' => 'download',
   );
 }
 
@@ -29,15 +27,9 @@ if($lang == 'tr') {
   </div>
 
   <div class="actions">
-    <a href="#" id="typetool_download" class="button">
-      <?php echo $trans['download'] ?>
-    </a>
-    <a href="#" data-type="facebook" class="button">
-      facebook
-    </a>
-    <a href="#" data-type="twitter" class="button">
-      twitter
-    </a>
+    <a href="javascript:void(0)" id="typetool_download" class="button"><span></span></a>
+    <a href="javascript:void(0)" data-type="facebook" class="button"><span></span></a>
+    <a href="javascript:void(0)" data-type="twitter" class="button"><span></span></a>
   </div>
 
 </div>

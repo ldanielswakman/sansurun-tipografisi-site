@@ -33,6 +33,8 @@
 			$('.' + $target).fadeIn('fast');
 			if($target == 'TypeTool') {
 				$('.TypeTool textarea').focus();
+			} else {
+				$('.TypeTool textarea').blur();
 			}
 		});
 		
