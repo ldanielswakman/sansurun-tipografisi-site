@@ -47,11 +47,6 @@ $lang = 'tr';
 				<a href="index_en.php">EN</a>
 			</div>
 		</div>
-
-		<?php
-		// call type cool component
-		include 'components/typetool.php';
-		?>
 		
 		<div class="Video">
 		
@@ -109,14 +104,15 @@ $lang = 'tr';
 		
 		
 		
-		<div class="Download">
-			<span id="Main" class="txt selected">Sansürün Tipografisi</span>
-			<span id="Post" class="txt">İlanlar ve Posterler</span>
-			<span class="txt ico">Sansürün Tipografisi'ni ücretsiz <b>indir</b></span>
+		<div class="Tabs">
+			<span id="Fonts" class="txt selected">Sansürün Tipografisi</span>
+			<span id="Posters" class="txt">İlanlar ve Posterler</span>
+			<span id="TypeTool" class="txt">Yaz</span>
+			<span id="Download" class="txt">Sansürün Tipografisi'ni ücretsiz <b>indir</b></span>
 			<div class="clear"></div>
 		</div>
 		
-		<div class="Posters">
+		<div class="Posters Tabcontent">
 			<div class="Poster"><img src="assets/Posters/01.jpg" /></div>
 			<div class="Poster"><img src="assets/Posters/02.jpg" /></div>
 			<div class="Poster"><img src="assets/Posters/03.jpg" /></div>
@@ -125,7 +121,7 @@ $lang = 'tr';
 			<div class="Poster"><img src="assets/Posters/06.jpg" /></div>
 		</div>
 		
-		<div class="Fonts">
+		<div class="Fonts Tabcontent">
 		
 			<span class="ISO" data-rel="Prev_01"><span>A</span></span>
 			<span class="ISO" data-rel="Prev_02"><span>B</span></span>
@@ -161,6 +157,11 @@ $lang = 'tr';
 			<span class="ISO" data-rel="Prev_32"><span>Z</span></span>
 		
 		</div>
+
+		<?php
+		// call type cool component
+		include 'components/typetool.php';
+		?>
 				
 	</section>
 	

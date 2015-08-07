@@ -11,7 +11,7 @@
 				
 		});
 		
-		$(document).on('click', '.ico', function(){
+		$(document).on('click', '#Download', function(){
 			
 			window.location = 'AmnestyFont.zip';
 				
@@ -23,18 +23,17 @@
 				
 		});
 		
-		$(document).on('click', '#Main', function(){
-			$(".Fonts").fadeToggle('fast');
-			$(".Posters").fadeToggle('fast');
+		$('#Fonts, #Posters, #TypeTool').click(function() {
+			// set classes on tabs
+			$('.Tabs .txt').removeClass('selected');
 			$(this).addClass('selected');
-			$("#Post").removeClass('selected');
-		});
-		
-		$(document).on('click', '#Post', function(){
-			$(".Fonts").fadeToggle('fast');
-			$(".Posters").fadeToggle('fast');
-			$(this).addClass('selected');
-			$("#Main").removeClass('selected');
+			// set visibility of target
+			$target = $(this).attr('id');
+			$('.Tabcontent').fadeOut('fast');
+			$('.' + $target).fadeIn('fast');
+			if($target == 'TypeTool') {
+				$('.TypeTool textarea').focus();
+			}
 		});
 		
 		$('.ISO').each(function() {
