@@ -46,17 +46,12 @@ $lang = 'en';
 				<a href="index_en.php"  style="color:#FFFF00;">EN</a>
 			</div>
 		</div>
-
-		<?php
-		// call type cool component
-		include 'components/typetool.php';
-		?>
 		
 		<div class="Video">
 		
 			<a class="PlayIcon" href="#"></a>
 			
-			<!-- Start EasyHtml5Video.com BODY section
+			<!-- Start EasyHtml5Video.com BODY section -->
 			<div class="VideoPlayer">
 		
 				<video controls="controls" loop="loop" width="100%" height="100%">
@@ -72,7 +67,7 @@ $lang = 'en';
 					</object>
 				</video>
 				
-			</div> -->
+			</div>
 			
 			<script src="scripts/HTML5ext.js" type="text/javascript"></script>
 			
@@ -101,15 +96,15 @@ $lang = 'en';
 		
 		
 		
-		
-		<div class="Download">
-			<span id="Main" class="txt selected">Typography of Censorship</span>
-			<span id="Post" class="txt">Prints & Posters</span>
-			<span class="txt ico">Download “Typography of Censorship”</span>
+		<div class="Tabs">
+			<span id="Fonts" class="txt selected">Typography of Censorship</span>
+			<span id="Posters" class="txt">Prints & Posters</span>
+			<span id="TypeTool" class="txt">Write & Share</span>
+			<span id="Download" class="txt">Download Typography</span>
 			<div class="clear"></div>
 		</div>
 		
-		<div class="Posters">
+		<div class="Posters Tabcontent">
 			<div class="Poster"><img src="assets/Posters/01_EN.jpg" /></div>
 			<div class="Poster"><img src="assets/Posters/02_EN.jpg" /></div>
 			<div class="Poster"><img src="assets/Posters/03_EN.jpg" /></div>
@@ -118,7 +113,7 @@ $lang = 'en';
 			<div class="Poster"><img src="assets/Posters/06_EN.jpg" /></div>
 		</div>
 		
-		<div class="Fonts">
+		<div class="Fonts Tabcontent">
 		
 			<span class="ISO" data-rel="Prev_01"><span>A</span></span>
 			<span class="ISO" data-rel="Prev_02"><span>B</span></span>
@@ -154,6 +149,11 @@ $lang = 'en';
 			<span class="ISO" data-rel="Prev_32"><span>Z</span></span>
 		
 		</div>
+
+		<?php
+		// call type cool component
+		include 'components/typetool.php';
+		?>
 				
 	</section>
 	

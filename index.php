@@ -107,8 +107,8 @@ $lang = 'tr';
 		<div class="Tabs">
 			<span id="Fonts" class="txt selected">Sansürün Tipografisi</span>
 			<span id="Posters" class="txt">İlanlar ve Posterler</span>
-			<span id="TypeTool" class="txt">Yaz</span>
-			<span id="Download" class="txt">Sansürün Tipografisi'ni ücretsiz <b>indir</b></span>
+			<span id="TypeTool" class="txt">Yaz ve Paylaş</span>
+			<span id="Download" class="txt">Tipografiyi İndir</span>
 			<div class="clear"></div>
 		</div>
 		
