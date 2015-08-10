@@ -8,7 +8,7 @@ $(document).ready(function() {
     'canvasPadding': 50,
     'lineLength': 10,
     'maxStringLength': 30,
-    'allowedCharsRegex': 'a-zA-ZİışŞÇçĞğüÜÖö',
+    'allowedCharsRegex': 'a-zA-ZİışŞÇçĞğüÜÖö ',
     'imgurClientID': '99df06f8be87b5a',
     'imgurAlbumID': 'H3H9B',
     'twitterText': 'Typography of Censorship:',
