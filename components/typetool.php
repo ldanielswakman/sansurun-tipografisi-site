@@ -18,7 +18,7 @@ if($lang == 'tr') {
 <div class="TypeTool Tabcontent">
 
   <div id="string_container">
-    <textarea id="string" type="text" rows="1" placeholder="<? echo $trans['placeholder'] ?>" autocomplete="off" spellcheck="false"></textarea>
+    <textarea id="string" type="text" wrap="off" rows="1" placeholder="<? echo $trans['placeholder'] ?>" autocomplete="off" spellcheck="false"></textarea>
     <div class="string-cover" id="string_display"></div>
     <div class="string-cover" id="string_mask">
       <span class="progress"></span>
